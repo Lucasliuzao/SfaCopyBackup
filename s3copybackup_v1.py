@@ -13,7 +13,7 @@ def lambda_handler(event, context):
     source_prefix = 'teste/'
     
     # Listar os objetos no bucket de origem
-    objects = s3.list_objects_v2(Bucket=source_bucket)
+    objects = s3.list_objects_v2(Bucket=source_bucket, Prefix=source_prefix)
     
     if 'Contents' in objects:
         # Encontrar o objeto mais recente
