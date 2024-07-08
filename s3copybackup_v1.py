@@ -10,6 +10,7 @@ sns_topic_arn = 'arn:aws:sns:us-east-1:942569085084:BucketCopyCorporeRM'  # Subs
 def lambda_handler(event, context):
     source_bucket = 'sfacopytest1'
     destination_bucket = 'sfacopytest2'
+    source_prefix = 'teste/'
     
     # Listar os objetos no bucket de origem
     objects = s3.list_objects_v2(Bucket=source_bucket)
