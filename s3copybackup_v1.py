@@ -5,7 +5,7 @@ s3 = boto3.client('s3')
 sns = boto3.client('sns')
 
 # ARN do tópico do SNS criado
-sns_topic_arn = 'arn:aws:sns:us-east-1:942569085084:BucketCopyCorporeRM'  # Substitua pelo ARN do seu tópico SNS
+sns_topic_arn = 'arn:aws:sns:us-east-1:completa com o arn do sns'  # Substitua pelo ARN do seu tópico SNS
 
 def lambda_handler(event, context):
     source_bucket = 'sfacopytest1'
