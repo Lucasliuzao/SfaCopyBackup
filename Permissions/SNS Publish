@@ -1,0 +1,13 @@
+
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "Statement1",
+			"Effect": "Allow",
+			"Action": [
+				"sns:Publish"
+			],
+			"Resource": ["arn:aws:sns:us-east-1:942569085084:BucketCopyCorporeRM:9809627e-3360-427f-b1e8-fb8a7d59df51"]
+		}
+	]
+}
