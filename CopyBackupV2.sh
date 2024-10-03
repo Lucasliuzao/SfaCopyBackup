@@ -1,11 +1,11 @@
 #!/bin/bash
 # Código para copiar arquivo específico no S3
-SOURCE_BUCKET="storage-gw-sql"
-DESTINATION_BUCKET="sfacopytest1"
-FILE_PREFIX="CorporeRM"
-CURRENT_DATE=$(date +"%Y%m01")
-FILE_NAME="${FILE_PREFIX}_${CURRENT_DATE}_0700.bak"
-SNS_TOPIC_ARN="arn:aws:sns:us-east-1:942569085084:BucketCopyCorporeRM" # Trocar pelo ARN do seu SNS
+SOURCE_BUCKET="bucket de origem" #Inserir o nome do bucket de origem
+DESTINATION_BUCKET="bucket de destino" #inserir o nome do bucket de destino
+FILE_PREFIX="nome do arquivo" #colocar o nome do arquivo
+CURRENT_DATE=$(date +"%Y%m01") #caso o nome do arquivo leva formatação de data
+FILE_NAME="${FILE_PREFIX}_${CURRENT_DATE}_0700.bak" #caso o arquivo contenha também o horário de criação
+SNS_TOPIC_ARN="arn:aws:sns:us-east-1:942569085082:colocar o arn do sns" # Trocar pelo ARN do seu SNS
 INSTANCE_ID="i-12937128371" # Substituir pelo ID da instância
 
 # Função para parar a instância EC2
