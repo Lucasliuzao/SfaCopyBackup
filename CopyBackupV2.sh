@@ -19,7 +19,7 @@ stop_instance() {
 }
 
 # Comando para copiar o arquivo
-aws s3 cp "s3://$SOURCE_BUCKET/Backup SFA/$FILE_NAME" "s3://$DESTINATION_BUCKET/Backup SFA Mensal/$FILE_NAME"
+aws s3 cp "s3://$SOURCE_BUCKET/$FILE_NAME" "s3://$DESTINATION_BUCKET/$FILE_NAME"
 
 # Verificar se a cópia foi bem-sucedida
 if [ $? -eq 0 ]; then
