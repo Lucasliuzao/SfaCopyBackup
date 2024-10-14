@@ -7,24 +7,24 @@ s3 = boto3.client('s3')
 sns = boto3.client('sns')
 
 # ARN do SNS
-sns_topic_arn = 'arn:aws:sns:us-east-1:942569085084:BucketCopyCorporeRM'  # Substitua pelo ARN do SNS
+sns_topic_arn = 'colocar arn do sns'  # Substitua pelo ARN do SNS
 
 # Configurar logger
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
-    source_bucket = 'storage-gw-sql'
-    source_prefix = 'Backup SFA/'
-    destination_bucket = 'storage-sql-us-east-1'
-    destination_prefix = 'Backup SFA Mensal/'
+    source_bucket = 'bucket de origem'
+    source_prefix = 'pasta/'
+    destination_bucket = 'backup de destino'
+    destination_prefix = 'pasta/'
     
     # Nome base do arquivo que deve ser copiado
-    file_prefix = 'CorporeRM'
+    file_prefix = 'nome do arquivo'
     
     # Mês vigente no formato YYYY/MM
     current_month = datetime.now().strftime('%Y/%m')
-    logger.info(f"Mês vigente: {current_month}")
+    logger.info(f"Mês vigente: {current_month}") #caso o arquivo contenha data
 
     try:
         # Listar arquivos no bucket de origem com o prefixo específico
@@ -86,7 +86,7 @@ def copy_multipart_file(source_key, destination_bucket, destination_key):
         offset = 0
         
         # Obter o tamanho do arquivo de origem
-        file_size = s3.head_object(Bucket='storage-gw-sql', Key=source_key)['ContentLength']
+        file_size = s3.head_object(Bucket='bucket de origem', Key=source_key)['ContentLength']
         logger.info(f"Tamanho do arquivo: {file_size} bytes. Iniciando cópia multipart.")
         
         while offset < file_size:
@@ -94,7 +94,7 @@ def copy_multipart_file(source_key, destination_bucket, destination_key):
             logger.info(f"Copiando parte {len(parts) + 1}: bytes {offset}-{end_range}")
             
             # Ler parte do arquivo
-            part = s3.get_object(Bucket='storage-gw-sql', Key=source_key, Range=f"bytes={offset}-{end_range}")
+            part = s3.get_object(Bucket='bucket de origem', Key=source_key, Range=f"bytes={offset}-{end_range}")
             data = part['Body'].read()
 
             # Enviar parte
