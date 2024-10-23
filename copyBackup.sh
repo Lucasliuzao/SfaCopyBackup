@@ -2,7 +2,7 @@
 
 # Definir variáveis
 SOURCE_BUCKET="sfacopytest1"
-DESTINATION_BUCKET="sfacopytest2"
+DESTINATION_BUCKET="sfacopytest3"
 FILE_NAME="Glue.png"
 SNS_TOPIC_ARN="arn:aws:sns:us-east-1:942569085084:BackupNotification" # Substitua pelo seu ARN do SNS
 
